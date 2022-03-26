@@ -13,6 +13,8 @@ def write_block(name, amount, to_whom, prev_hash=""):
 
 
 def main():
+    if not os.path.exists(os.curdir + os.sep + "blocks" + os.sep):
+        os.mkdir(os.curdir + os.sep + "blocks" + os.sep)
     write_block("Vadim", 10, "Klava")
 
 
