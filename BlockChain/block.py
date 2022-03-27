@@ -41,7 +41,7 @@ def check_hash():
     :return:   boolean
     """
     for file in get_files_list()[1:]:
-        prev_hash = get_hash(file-1)
+        prev_hash = get_hash(file-1) #hash of previev file
         verific_hash = json.load(open(get_fullname(file)))["hash"]
         if verific_hash != prev_hash:
             return False
