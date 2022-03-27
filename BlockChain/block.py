@@ -16,7 +16,7 @@ def get_files_list():
     return sorted(int(i.replace(file_type, "")) for i in os.listdir(blockcain_directory) if i.endswith(file_type))
 
 
-def get_filename():
+def get_lastfile():
     """
     :return: int -> name of last file
     """
@@ -49,7 +49,7 @@ def check_hash():
 
 
 def write_block(name, amount, to_whom, prev_hash=""):
-    file = get_filename()
+    file = get_lastfile()
     data = {"name": name,
             "amount": amount,
             "to_whom": to_whom,
@@ -59,7 +59,7 @@ def write_block(name, amount, to_whom, prev_hash=""):
 
 
 def main():
-     prev_hash = str(get_hash(str(get_filename()))) #hash of previev file
+     prev_hash = str(get_hash(str(get_lastfile()))) #hash of previev file
      write_block("Vadim", 10, "Klava", prev_hash)
 
 
