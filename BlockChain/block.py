@@ -5,15 +5,21 @@ import os
 blockcain_directory = os.curdir + os.sep + "blocks" + os.sep
 file_type = ".blc"
 
-def get_fullname(file):
+def get_fullname(file):# full name of files for OS
     return blockcain_directory + str(file) + file_type
 
 
 def get_files_list():
+    """
+    :return: list integers for file names
+    """
     return sorted(int(i.replace(file_type, "")) for i in os.listdir(blockcain_directory) if i.endswith(file_type))
 
 
 def get_filename():
+    """
+    :return: int -> name of last file
+    """
     files = get_files_list()
     try:
         return int(files[-1])
@@ -22,10 +28,18 @@ def get_filename():
 
 
 def get_hash(file):
+    """
+    :param file:  int
+    :return:   hash of file width name "file"
+    """
     file = open(get_fullname(file), "rb").read()
     return hashlib.md5(file).hexdigest()
 
 def check_hash():
+    """
+    verify blockchain
+    :return:   boolean
+    """
     for file in get_files_list()[1:]:
         prev_hash = get_hash(file-1)
         verific_hash = json.load(open(get_fullname(file)))["hash"]
@@ -45,7 +59,7 @@ def write_block(name, amount, to_whom, prev_hash=""):
 
 
 def main():
-     prev_hash = str(get_hash(str(get_filename())))
+     prev_hash = str(get_hash(str(get_filename()))) #hash of previev file
      write_block("Vadim", 10, "Klava", prev_hash)
 
 
