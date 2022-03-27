@@ -5,9 +5,9 @@ import os
 blockcain_directory = os.curdir + os.sep + "blocks" + os.sep
 
 
-def get_filename():
 
-    files = sorted(int(i.replace(".blc", "")) for i in os.listdir(blockcain_directory) if i.endswith(r".blc"))
+def get_filename():
+    files = sorted(int(i.replace(".blc", "")) for i in os.listdir(blockcain_directory) if i.endswith(".blc"))
     try:
         return int(files[-1])
     except:
